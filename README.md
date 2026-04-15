@@ -8,7 +8,7 @@
 
 ## Mo ta
 
-(Mo ta ngan gon bai lab va nhung gi ban da lam)
+Bai lab nay xay dung mot ETL (Extract - Transform - Load) Pipeline tu dong de xu ly du lieu san pham tu file JSON. Pipeline thuc hien cac buoc: doc du lieu, validate du lieu khong hop le (gia am, category rong), chuan hoa du lieu (Title Case, giam gia 10%), va luu ket qua ra file CSV. Ngoai ra, thi nghiem Stress Test so sanh chat luong phan hoi cua AI Agent khi dung du lieu sach va du lieu "rac".
 
 ---
 
@@ -16,7 +16,7 @@
 
 ### Prerequisites
 ```bash
-pip install pandas
+pip install pandas pytest
 ```
 
 ### Chay ETL Pipeline
@@ -26,7 +26,19 @@ python solution.py
 
 ### Chay Agent Simulation (Stress Test)
 ```bash
-# Mo ta cach ban chay thi nghiem Clean vs Garbage data
+# Buoc 1: Tao garbage data
+python generate_garbage.py
+
+# Buoc 2: Chay ETL pipeline de tao processed_data.csv
+python solution.py
+
+# Buoc 3: Chay Agent simulation so sanh Clean vs Garbage
+python agent_simulation.py
+```
+
+### Chay Tests
+```bash
+pytest tests/
 ```
 
 ---
@@ -34,9 +46,14 @@ python solution.py
 ## Cau truc thu muc
 
 ```
-├── solution.py              # ETL Pipeline script
-├── processed_data.csv       # Output cua pipeline
-├── experiment_report.md     # Bao cao thi nghiem
+├── solution.py              # ETL Pipeline script chinh
+├── agent_simulation.py      # Gia lap AI Agent de stress test
+├── generate_garbage.py      # Tao du lieu "rac" de thi nghiem
+├── raw_data.json            # Du lieu dau vao (5 san pham)
+├── processed_data.csv       # Output cua pipeline (sau khi chay solution.py)
+├── experiment_report.md     # Bao cao thi nghiem Stress Test
+├── tests/
+│   └── test_autograder.py   # Bo test tu dong cua GitHub Classroom
 └── README.md                # File nay
 ```
 
@@ -44,4 +61,9 @@ python solution.py
 
 ## Ket qua
 
-(Tom tat ket qua: bao nhieu records da xu ly, bao nhieu bi loai, v.v.)
+- **Tong records dau vao:** 5
+- **Records hop le (processed):** 3 (Laptop, Chair, Monitor)
+- **Records bi loai (dropped):** 2
+  - id=3 "Mystery Box": price = -10 (gia am, khong hop le)
+  - id=4 "Phone": category rong (khong co danh muc)
+- **Cot them vao:** `discounted_price` (giam 10%), `processed_at` (timestamp)

@@ -8,7 +8,7 @@
 
 ## Mo ta
 
-Bai lab nay xay dung mot ETL (Extract - Transform - Load) Pipeline tu dong de xu ly du lieu san pham tu file JSON. Pipeline thuc hien cac buoc: doc du lieu, validate du lieu khong hop le (gia am, category rong), chuan hoa du lieu (Title Case, giam gia 10%), va luu ket qua ra file CSV. Ngoai ra, thi nghiem Stress Test so sanh chat luong phan hoi cua AI Agent khi dung du lieu sach va du lieu "rac".
+Bai lab nay xay dung mot ETL (Extract - Transform - Load) Pipeline tu dong de xu ly du lieu san pham tu file JSON. Pipeline thuc hien cac buoc: doc du lieu, validate du lieu khong hop le (gia am, category rong), chuan hoa du lieu, va luu ket qua ra file CSV. Ngoai ra, thi nghiem Stress Test so sanh chat luong phan hoi cua AI Agent khi dung du lieu sach va du lieu "rac".
 
 ---
 

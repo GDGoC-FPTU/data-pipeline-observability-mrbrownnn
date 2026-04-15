@@ -1,14 +1,14 @@
-# Báo Cáo Thí Nghiệm: Tác Động Của Chất Lượng Dữ Liệu Đến AI Agent
+# Experiment Report: Data Quality Impact on AI Agent
 
-**Student ID:** AI20K-XXXX
-**Name:** (Điền tên của bạn)
-**Date:** (Điền ngày thực hiện)
+**Student ID:** AI20K-2A202600272
+**Name:** Pham Van Thanh
+**Date:** 25/4/26
 
 ---
 
 ## 1. Kết Quả Thí Nghiệm
 
-Chạy `agent_simulation.py` với 2 bộ dữ liệu và ghi lại kết quả:
+Chay `agent_simulation.py` voi 2 bo du lieu va ghi lai ket qua:
 
 | Scenario | Agent Response | Accuracy (1-10) | Notes |
 |----------|----------------|-----------------|-------|
@@ -23,14 +23,14 @@ Chạy `agent_simulation.py` với 2 bộ dữ liệu và ghi lại kết quả:
 
 Khi sử dụng dữ liệu sạch (clean data), ETL pipeline đã loại bỏ các bản ghi có giá âm, giá bằng 0, và category rỗng. Kết quả là Agent chỉ làm việc với dữ liệu hợp lệ, đưa ra câu trả lời chính xác và có nghĩa.
 
-Tuy nhiên, khi Agent nhận dữ liệu "rác" (garbage data), có nhiều vấn đề nghiêm trọng ảnh hưởng đến chất lượng phản hồi:
+Tuy nhiên, khi Agent nhận dữ liệu rác, có nhiều vấn đề nghiêm trọng ảnh hưởng đến chất lượng phản hồi:
 
 1. **Duplicate IDs**: Bản ghi có id=1 xuất hiện hai lần (Laptop và Banana), gây nhầm lẫn về tính duy nhất của dữ liệu.
 2. **Wrong data types**: Trường `price` của "Broken Chair" có giá trị là chuỗi "ten dollars" thay vì số, khiến phép tính số học bị lỗi.
-3. **Extreme outliers**: "Nuclear Reactor" có giá $999,999 - đây là giá trị bất thường quá mức, khiến Agent chọn nó là "best deal" dù không có ý nghĩa thực tế.
+3. **Extreme outliers**: "Nuclear Reactor" có giá $999,999 - đây là giá trị bất thường quá mức, khiến Agent chọn nó là "best deal" dù không có ý nghĩa thực tế, gây ra hiện tượng đề xuất sai. Điều này thực sự nguy hiểm trong các sản phẩm yêu cầu độ chính xác cao như giao dịch ngân hàng hoặc pháp luật.
 4. **Null values**: Bản ghi "Ghost Item" có id và category là None, gây lỗi khi xử lý.
 
-Tất cả những vấn đề trên chứng minh rằng: dữ liệu kém chất lượng sẽ khiến AI Agent đưa ra kết quả sai lệch hoặc vô nghĩa, bất kể prompt có tốt đến đâu. Đây chính là nguyên nhân tại sao observability và data quality là nền tảng của bất kỳ hệ thống AI nào.
+Tất cả những vấn đề trên chứng minh dữ liệu kém chất lượng sẽ khiến AI Agent đưa ra kết quả sai lệch hoặc vô nghĩa, bất kể prompt có tốt đến đâu. Đây chính là nguyên nhân tại sao observability và data quality là nền tảng của bất kỳ hệ thống AI và là bước xử lí tốn thời gian nhất của bất kì hệ thống AI nào trong doanh nghiệp.
 
 ---
 
